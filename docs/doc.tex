@@ -1,0 +1,69 @@
+\documentclass{article}
+
+\title{[C.] Proiecte - Reprezentarea grafică a circuitului logic al unei funcții booleene}
+\author{Ilieș Andrei-Cristian (10LF222)\\ Macovei Alexandru-Fabian (10LF222)}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Descrierea proiectului}
+\hspace{0.5cm}În acest proiect ne-am propus să realizăm o aplicație grafică în Python, în care utilizatorul poate alege o funcție booleană pe care o va scrie într-un fișier de intrare sub formă de tabel de valori sau cu valorile funcției pe o singură linie. Această funcție va fi simplificată și în final se va afișa într-o interfață grafică schema circuitului logic al formei simplificate ale funcției. Funcțiile pot fi de maxim 6 variabile, limită sugerată de doamna profesor coordonator Vasilescu Anca, dar aplicația poate fi cu ușurintă extinsă pentru un număr mai mare de necunoscute.
+
+\section*{Legătura directă cu Arhitectura Sistemelor de Calcul}
+\hspace{0.5cm}Ne-am dorit să realizăm un proiect ce are ca temă Unitatea 2 din cadrul cursului de Arhitectura Sistemelor de Calcul, și anume Circuitele logice. Am încercat să ne gândim dacă este posibil să construim scheme ale circuitelor logice utilizând limbajul Python. Ulterior am găsit o metodă ce simplifică funcțiile în modulul sympy, cea mai complexă parte a acestui proiect fiind realizarea schemei circuitului logic într-o interfață grafică.
+
+Astfel, proiectul are legătură directă cu Arhitectura Sistemelor de Calcul datorită subiectului pe care l-am abordat și care face trimitere la cea de-a doua unitate din cadrul acestui curs.
+
+\section*{Instructiuni de utilizare}
+\hspace{0.5cm}Pentru executarea programului este nevoie ca modulele \verb|math|, \verb|sympy| și \verb|tkinter| să fie instalate. Datele de intrare se introduc într-unul dintre fișierele cu extensia \verb|.txt| astfel:
+
+\begin{enumerate}
+    \item Dacă doriți ca citirea să se realizeze din fișierul \verb|table.txt|, atunci valorile funcției vor fi introduse în ordine pe ultima coloană a tabelului, celelalte coloane fiind folosite pentru a reprezenta combinația de intrare corespunzătoare. Coloanele trebuie despărțite prin câte un spațiu. Este necesar ca tabelul sa aibă pe linii toate combinațiile variabilelor de intrare. \textbf{Atenție! Prima linie a fișierului este doar pentru o organizare vizuală mai bună a datelor; aceasta va fi ignorată de algoritm, alcătuirea funcției începând de la linia a doua.} De asemenea, la apariția meniului de selecție se va alege opțiunea \verb|1|.
+    \item Dacă doriți ca citirea să se realizeze din fișierul \verb|line.txt|, atunci valorile funcției vor fi introduse pe prima linie a fișierului, separate prin câte un spatiu, în ordinea crescatoare a combinațiilor variabilelor binare de intrare pe care le valorizează. Deoarece numărul de variabile nu este citit, ci calculat pe baza numărului de valori ale funcției, este necesar ca numărul de valori introduse să fie o putere de-a lui 2 pentru buna funcționare a algoritmului. De asemena, la apariția meniului de selecție se va alege opțiunea \verb|2|.
+\end{enumerate}
+
+După introducerea datelor de intrare se va lansa în execuție fișierul \verb|main.py|, unde veți întâlni mai întâi meniul. Dupa selecția corespunzătoare a opțiunii, programul își va începe execuția. În noua fereastră "Circuit" creată va apărea schema grafică a circuitului, porțile logice fiind numerotate începând cu 1. În consolă pe primul rând se va afișa expresia funcției booleene după simplificarea acesteia. În plus, tot în consolă se vor afișa pentru fiecare poartă logică urmatoarele informații:
+
+\begin{itemize}
+    \item Numărul porții, pentru a o identifica pe schema grafică.
+    \item "Nivelul" (coloana din reprezentarea grafică) pe care se află poarta.
+    \item Expresia logică a porții, formată din membrul stâng, unul dintre cuvintele \verb|AND| si \verb|OR|, respectiv membrul drept.
+\end{itemize}
+
+\section*{Elemente utilizate din limbajul Python}
+\hspace{0.5cm}\textbf{Module utilizate:}
+
+\begin{itemize}
+  \item sympy - utilizat pentru funcția \verb|simplify|, care aduce o funcție logică oarecare la una din formele ei minimale
+  \item math - utilizat pentru funcția logaritmică
+  \item tkinter - utilizat pentru crearea interfeței grafice
+\end{itemize}
+
+\textbf{Elemente specifice de limbaj:}
+
+\begin{itemize}
+  \item Tăierea listelor folosind operatorul \verb|[:]| (exemplu: \verb|expr = expr[3:]|)
+  \item Întoarcerea a mai multor valori folosind o singura instrucțiune \verb|return| (exemplu: \verb|return expr, var_count|)
+  \item Asocierea de valori mai multor variabile intr-o singură instrucțiune (exemplu: \verb|WIDTH, HEIGHT = 1600, 800|)
+  \item Utilizarea comprehensiunii de liste pentru a crea alte liste (exemplu:\\ \verb|func_values = [int(x) for x in lines[i].split(" ")]|)
+\end{itemize}
+
+\section*{Utilitate}
+\hspace{0.5cm}Aplicația propusă poate fi utilizată în mai multe moduri, în funcție de nevoile utilizatorilor. Iată câteva exemple:
+
+\begin{itemize}
+  \item Învățarea conceptelor logicii booleene
+  \item Automatizarea procesului de realizare a schemei grafice a circuitelor logice
+\end{itemize}
+
+\section*{Originalitate}
+\hspace{1cm}Implementarea acestei aplicații a constat în împărțirea în mai multe etape distincte, fiecare parte având scopul său specific. Aceste etape au fost concepute pentru a aborda diferite aspecte ale funcțiilor booleene și ale realizării circuitului logic.
+
+\hspace{0.5cm}Am căutat pe internet elementele de care am avut nevoie pentru a realiza toți pașii, am construit fiecare bucată separat, am combinat corespunzător secvențele de cod și astfel am obținut rezultatul dorit. Nu am utilizat deloc secvențe de cod deja existente, ci ne-am ales libertatea de a alcătui o implementare proprie în cadrul acestui proiect.
+
+\section*{Autoevaluare}
+\hspace{1cm}Suntem foarte mulțumiți de rezultatul final al aplicației. Programul funcționează pentru orice date de intrare valide (așezate în fișier corepunzător nevoilor algoritmilor de citire) în limita spațiului de afișaj grafic.
+
+\end{document}
